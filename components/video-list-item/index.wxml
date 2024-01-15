@@ -1,5 +1,5 @@
 <wxs module="format" src="../../utils/format.wxs"></wxs>
-<view class="item" bindtap="handleItemClick">
+<view class="item">
   <view class="album">
     <image class="image" src="{{itemInfo.cover}}" mode="widthFix"></image>
     <view class="info">

@@ -2,36 +2,36 @@ import { getTopMV } from "../../service/video";
 Page({
   data: {
     topMVList: [],
+    hasMore: true,
   },
-  onLoad: function (options) {
+  onLoad: function () {
     this.getTopMvs();
   },
-  async getTopMvs() {
-    const res = await getTopMV(0);
-    this.setData({
-      topMVList: res.data,
-    });
-  },
   async onPullDownRefresh() {
-    const res = await getTopMV(0);
-
-    console.log(
-      "%c [  ]-18",
-      "font-size:13px; background:pink; color:#bf2c9f;",
-      res
-    );
-    this.setData({
-      topMVList: res.data,
-    });
+    this.getTopMvs();
   },
   async onReachBottom() {
-    const res = await getTopMV(this.data.topMVList.length);
-    const { hasMore, data } = res;
-    if (!hasMore) {
+    this.getTopMvs(this.data.topMVList.length);
+  },
+  async getTopMvs(num = 0) {
+    const res = await getTopMV(num);
+    // 展示加载动画
+    if (!this.data.hasMore) {
       return;
     }
+    wx.showNavigationBarLoading();
+    const { data, hasMore } = res;
     this.setData({
-      topMVList: this.data.topMVList.concat(data),
+      topMVList: num === 0 ? data : this.data.topMVList.concat(data),
+      hasMore,
+    });
+    wx.hideNavigationBarLoading();
+  },
+  // 跳转至新页面
+  handleItemClick(event) {
+    const { id } = event.currentTarget.dataset.item;
+    wx.navigateTo({
+      url: "/pages/detail-video/index?id=" + id,
     });
   },
 });

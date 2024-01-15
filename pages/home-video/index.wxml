@@ -1,5 +1,7 @@
+<!-- data-item用于事件点击传递数据 -->
 <view class="video">
   <view class="video-item" wx:for="{{topMVList}}" wx:key="id">
-    <video-list-item itemInfo="{{item}}"></video-list-item>
+    <video-list-item itemInfo="{{item}}" bindtap="handleItemClick" data-item="{{item}}"></video-list-item>
   </view>
 </view>
+

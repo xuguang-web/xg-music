@@ -12,3 +12,17 @@ export function getMVDetail(id) {
     mvid: id,
   });
 }
+
+export function getMVURL(id) {
+  return xgRequest.get("/mv/url", {
+    id,
+  });
+}
+
+export function getRelateMV(id) {
+  return xgRequest.get("/related/allvideo", {
+    id,
+  });
+}
+
+

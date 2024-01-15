@@ -2,11 +2,12 @@
   "pages": [
     "pages/home-music/index",
     "pages/home-video/index",
-    "components/video-list-item/index"
+    "components/video-list-item/index",
+    "pages/detail-video/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "xg-music",
     "navigationBarBackgroundColor": "#ffffff"
   },
   "tabBar": {

@@ -1,4 +1,3 @@
-// components/video-list-item/index.js
 Component({
   properties: {
     itemInfo: {
